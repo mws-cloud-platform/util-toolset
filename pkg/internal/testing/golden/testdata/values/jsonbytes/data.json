@@ -1,0 +1,14 @@
+{
+    "name": "Alex",
+    "age":  34,
+    "hobbies": [
+        {
+            "name":  "swimming",
+            "skill": 3
+        },
+        {
+            "name":  "hiking",
+            "skill": 5
+        }
+    ]
+}

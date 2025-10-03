@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Hello, this is a test script."
+echo "Current date and time: $(date)"
