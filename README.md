@@ -1,7 +1,7 @@
 # Util-Toolset module: Internal Tools
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/mws-cloud-platform/util-toolset)](https://pkg.go.dev/github.com/mws-cloud-platform/util-toolset)
-![Build](https://github.com/mws-cloud-platform/util-toolset/actions/workflows/CI.yml/badge.svg)
+[![Build](https://github.com/mws-cloud-platform/util-toolset/actions/workflows/CI.yaml/badge.svg)](https://github.com/mws-cloud-platform/util-toolset/actions/workflows/CI.yaml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mws-cloud-platform/util-toolset)](https://goreportcard.com/report/github.com/mws-cloud-platform/util-toolset)
 [![golangci-lint](https://img.shields.io/badge/linted%20by-golangci--lint-brightgreen)](https://golangci-lint.run/)
 ![Last Commit](https://img.shields.io/github/last-commit/mws-cloud-platform/util-toolset)
