@@ -1,143 +1,177 @@
 version: "2"
-run:
-  concurrency: 4
-  relative-path-mode: gomod
+
 linters:
   default: none
   enable:
-    - asasalint
-    - asciicheck
-    - bodyclose
-    - containedctx
-    - copyloopvar
-    - cyclop
-    - dogsled
-    - err113
-    - errcheck
-    - errname
-    - errorlint
-    - exptostd
-    - forbidigo
-    - gocheckcompilerdirectives
-    - gochecknoinits
-    - goconst
-    - gocritic
-    - gomoddirectives
-    - goprintffuncname
-    - gosec
-    - govet
-    - grouper
-    - ineffassign
-    - lll
-    - misspell
-    - nakedret
-    - nilerr
-    - nilnesserr
-    - noctx
-    - nolintlint
-    - prealloc
-    - predeclared
-    - revive
-    - staticcheck
-    - unconvert
-    - unparam
-    - unused
-    - usestdlibvars
-    - usetesting
-    - whitespace
+  - asasalint
+  - asciicheck
+  - bidichk
+  - bodyclose
+  - canonicalheader
+  - containedctx
+  - contextcheck
+  - cyclop
+  - dogsled
+  - dupl
+  - dupword
+  - durationcheck
+  - err113
+  - errcheck
+  - errname
+  - errorlint
+  - fatcontext
+  - forcetypeassert
+  - gocheckcompilerdirectives
+  - gocognit
+  - goconst
+  - gocritic
+  - gocyclo
+  - godoclint
+  - godot
+  - gomoddirectives
+  - goprintffuncname
+  - gosec
+  - gosmopolitan
+  - govet
+  - ineffassign
+  - intrange
+  - iotamixing
+  - lll
+  - loggercheck
+  - mirror
+  - misspell
+  - mnd
+  - nakedret
+  - nestif
+  - nilerr
+  - nilnesserr
+  - nilnil
+  - noctx
+  - nolintlint
+  - nosprintfhostport
+  - perfsprint
+  - prealloc
+  - predeclared
+  - reassign
+  - recvcheck
+  - revive
+  - spancheck
+  - staticcheck
+  - testifylint
+  - tparallel
+  - unconvert
+  - unparam
+  - unused
+  - usestdlibvars
+  - usetesting
+  - wastedassign
+  - whitespace
   settings:
     cyclop:
       max-complexity: 15
+    dogsled:
+      max-blank-identifiers: 2
+    dupl:
+      threshold: 150
+    errcheck:
+      check-type-assertions: true
+    gocognit:
+      min-complexity: 30
     goconst:
-      match-constant: false
-    gocritic:
-      disabled-checks:
-        - commentFormatting
-    gosec:
-      config:
-        G306: "0644"
+      min-len: 3
+      min-occurrences: 3
+    gocyclo:
+      min-complexity: 20
+    godoclint:
+      enable:
+      - no-unused-link
+      options:
+        max-len:
+          length: 160
+    godot:
+      scope: declarations
+    gomoddirectives:
+      exclude-forbidden: true
     govet:
       disable:
-        - fieldalignment
+      - fieldalignment
       enable-all: true
+    gosec:
+      excludes:
+      - G301
+      - G304
+      - G306
     lll:
       line-length: 160
+    misspell:
+      locale: US
     mnd:
       ignored-numbers:
-        - "0644"
-        - "0755"
+      - "0o600"
+      - "0o666"
+      - "0o644"
+      - "0o755"
+      - "0o777"
+    nakedret:
+      max-func-lines: 30
+    nestif:
+      min-complexity: 5
     nolintlint:
       require-explanation: true
       require-specific: true
-    staticcheck:
-      checks:
-        - -ST1000
-        - -ST1003
-        - -ST1020
-        - -ST1021
-        - -ST1022
-        - all
+      allow-unused: false
+    revive:
+      enable-all-rules: true
+      rules:
+      - name: enforce-slice-style
+        arguments: ["nil"]
+      - name: line-length-limit
+        arguments: [160]
+      - name: cognitive-complexity
+        disabled: true
+      - name: add-constant
+        disabled: true
+      - name: enforce-switch-style
+        disabled: true
+      - name: import-shadowing
+        disabled: true
+      - name: max-public-structs
+        disabled: true
     usestdlibvars:
+      default-rpc-path: true
+      time-date-month: true
+      time-weekday: true
       time-month: true
       time-layout: true
       crypto-hash: true
-      default-rpc-path: true
       tls-signature-scheme: true
       constant-kind: true
     usetesting:
       os-temp-dir: true
+    unused:
+      local-variables-are-used: false
   exclusions:
     generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
-    rules:
-      - linters:
-          - staticcheck
-        text: 'SA1019:'
-      - linters:
-          - err113
-        path-except: pkg\/
-      - linters:
-          - err113
-          - errcheck
-          - funlen
-          - gocyclo
-          - gosec
-          - lll
-          - mnd
-          - prealloc
-        path: _test\.go
-      - linters:
-          - goconst
-        path: (.+)_test\.go
-    paths:
-      - .*\_gen\.go$
-      - .*\.gen\.go$
-      - .*\_gen\_test\.go$
-      - .*\.gen\_test\.go$
-      - .*\.pb\.go$
-      - mock
-      - vendor
-      - testdata
-      - test_data
-      - third_party$
-      - third-party$
-      - builtin$
-      - examples$
-      - example$
+    warn-unused: true
+
 issues:
   max-issues-per-linter: 0
   max-same-issues: 0
-  uniq-by-line: false
-formatters:
-  exclusions:
-    generated: lax
-    paths:
-      - third_party$
-      - third-party$
-      - builtin$
-      - examples$
-      - example$
+
+output:
+  formats:
+    text:
+      path: stdout
+      print-linter-name: true
+      print-issued-lines: true
+
+run:
+  timeout: 5m
+  relative-path-mode: gomod
+  issues-exit-code: 1
+  tests: true
+  modules-download-mode: readonly
+  allow-serial-runners: true
+
+severity:
+  default: error

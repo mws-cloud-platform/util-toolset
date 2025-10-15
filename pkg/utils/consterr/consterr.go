@@ -1,7 +1,10 @@
+// Package consterr provides a simple way to create sentinel errors that
+// cannot be changed during runtime.
 package consterr
 
 // Error is used for sentinel errors
-// Example: const ErrMy = consterr.Error("something happened")
+//
+//	const ErrMy = consterr.Error("something happened")
 type Error string
 
 func (e Error) Error() string {

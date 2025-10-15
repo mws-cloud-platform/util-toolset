@@ -34,7 +34,7 @@ func (s *uniqueTestSuite) TestWrite() {
 
 func (s *uniqueTestSuite) TestWriteDuplicateName() {
 	s.mock.EXPECT().WriteFile("x.txt", gomock.Any(), gomock.Any())
-	s.NoError(s.unique.WriteFile("x.txt", nil, os.ModePerm))
+	s.Require().NoError(s.unique.WriteFile("x.txt", nil, os.ModePerm))
 	s.nonUniqueError(s.unique.WriteFile("x.txt", nil, os.ModePerm))
 }
 
@@ -73,7 +73,7 @@ func (s *uniqueTestSuite) TestRenameDifferentName() {
 
 func (s *uniqueTestSuite) TestRenameSameName() {
 	s.mock.EXPECT().WriteFile("x.txt", gomock.Any(), gomock.Any())
-	s.NoError(s.unique.WriteFile("x.txt", nil, os.ModePerm))
+	s.Require().NoError(s.unique.WriteFile("x.txt", nil, os.ModePerm))
 	s.nonUniqueError(s.unique.Rename("x.txt", "x.txt"))
 }
 

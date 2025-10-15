@@ -7,12 +7,12 @@ import (
 )
 
 func TestGet(t *testing.T) {
-	require.Equal(t, *Get("test"), "test")
+	require.Equal(t, "test", *Get("test"))
 }
 
 func TestValue(t *testing.T) {
 	var strPointer *string
-	require.Equal(t, "", Value(strPointer))
+	require.Empty(t, Value(strPointer))
 
 	strPointer = Get("test")
 	require.Equal(t, "test", Value(strPointer))

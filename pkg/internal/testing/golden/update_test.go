@@ -6,7 +6,6 @@ import (
 	"path"
 	"testing"
 
-	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/mock/gomock"
 
@@ -28,7 +27,7 @@ func (suite *dirUpdateTestSuite) TestDirBytesUpdate() {
 
 	suite.MFS.
 		EXPECT().
-		WriteFile(suite.goldenFilepath(), data, os.FileMode(0644)).
+		WriteFile(suite.goldenFilepath(), data, os.FileMode(0o644)).
 		Return(nil)
 
 	dir := NewDir(suite.T(), WithPath(suite.GoldenDirpath), WithFS(suite.MFS))
@@ -42,7 +41,7 @@ func (suite *dirUpdateTestSuite) TestDirStringUpdate() {
 
 	suite.MFS.
 		EXPECT().
-		WriteFile(suite.goldenFilepath(), []byte(data), os.FileMode(0644)).
+		WriteFile(suite.goldenFilepath(), []byte(data), os.FileMode(0o644)).
 		Return(nil)
 
 	dir := NewDir(suite.T(), WithPath(suite.GoldenDirpath), WithFS(suite.MFS))
@@ -67,7 +66,7 @@ func (suite *dirUpdateTestSuite) TestDirJSONBytesUpdate() {
 
 	suite.MFS.
 		EXPECT().
-		WriteFile(suite.goldenFilepath(), data, os.FileMode(0644)).
+		WriteFile(suite.goldenFilepath(), data, os.FileMode(0o644)).
 		Return(nil)
 
 	dir := NewDir(suite.T(), WithPath(suite.GoldenDirpath), WithFS(suite.MFS))
@@ -92,11 +91,11 @@ func (suite *dirUpdateTestSuite) TestDirJSONUpdate() {
 		},
 	}
 	rawData, err := json.MarshalIndent(data, "", " ")
-	require.NoError(suite.T(), err)
+	suite.Require().NoError(err)
 
 	suite.MFS.
 		EXPECT().
-		WriteFile(suite.goldenFilepath(), rawData, os.FileMode(0644)).
+		WriteFile(suite.goldenFilepath(), rawData, os.FileMode(0o644)).
 		Return(nil)
 
 	dir := NewDir(suite.T(), WithPath(suite.GoldenDirpath), WithFS(suite.MFS))

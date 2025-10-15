@@ -1,6 +1,7 @@
 package consterr_test
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 
@@ -16,8 +17,10 @@ const (
 
 var _ error = ErrOne
 
+var errTest = errors.New("test")
+
 func TestError(t *testing.T) {
-	err := fmt.Errorf("%w: %w", ErrOne, fmt.Errorf("test"))
+	err := fmt.Errorf("%w: %w", ErrOne, errTest)
 	require.ErrorIs(t, err, ErrOne)
 	require.NotErrorIs(t, err, ErrTwo)
 	require.Equal(t, "one: test", err.Error())

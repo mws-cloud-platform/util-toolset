@@ -29,7 +29,7 @@ func TestDirCreateRootDirRemoveAll(t *testing.T) {
 
 	touch := func(name string) {
 		t.Helper()
-		assert.NoError(t, fs.WriteFile(name, []byte(""), 0644))
+		assert.NoError(t, fs.WriteFile(name, []byte(""), 0o644))
 	}
 
 	gomock.InOrder(
@@ -43,7 +43,7 @@ func TestDirCreateRootDirRemoveAll(t *testing.T) {
 
 	touch("foo/bar/1.txt")
 	touch("foo/bar/2.txt")
-	assert.NoError(t, fs.RemoveAll("foo"))
+	require.NoError(t, fs.RemoveAll("foo"))
 	touch("foo/bar/3.txt")
 }
 
@@ -54,7 +54,7 @@ func TestDirCreateRootDirRemove(t *testing.T) {
 
 	touch := func(name string) {
 		t.Helper()
-		assert.NoError(t, fs.WriteFile(name, []byte(""), 0644))
+		assert.NoError(t, fs.WriteFile(name, []byte(""), 0o644))
 	}
 
 	gomock.InOrder(

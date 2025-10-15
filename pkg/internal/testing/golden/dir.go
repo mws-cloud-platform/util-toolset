@@ -1,3 +1,4 @@
+// Package golden provides helpers for working with golden files in tests.
 package golden
 
 import (
@@ -13,6 +14,8 @@ import (
 	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
 )
 
+// Dir is a helper for managing golden files in a directory
+// under [fs.FS].
 type Dir struct {
 	mu               sync.Mutex
 	registry         map[string]bool
@@ -23,13 +26,13 @@ type Dir struct {
 }
 
 // NewDir creates a directory where golden files will be stored.
-// update field is initialised with current updateFlag value.
+// update field is initialized with current updateFlag value.
 //
 // Possible options:
 // golden.WithRecreateOnUpdate() will recreate the golden directory when updating;
 // golden.WithPath(customPath) set the path to the golden directory, the default is ./testdata/
 //
-// dir := golden.NewDir(t, golden.WithPath("testdata/example/golden"), golden.WithRecreateOnUpdate())
+//	dir := golden.NewDir(t, golden.WithPath("testdata/example/golden"), golden.WithRecreateOnUpdate())
 func NewDir(t testing.T, opts ...DirOption) *Dir {
 	x := &Dir{
 		path:             "./testdata/",
@@ -60,12 +63,12 @@ func (d *Dir) writeFile(t testing.T, fileName string, actual []byte) {
 		require.Fail(t, "trying to write golden with name "+fileName+" multiple times")
 	}
 	d.registry[fileName] = true
-	require.NoError(t, d.fs.WriteFile(fileName, actual, 0644))
+	require.NoError(t, d.fs.WriteFile(fileName, actual, 0o644))
 }
 
 // MkDir creates a directory, fails the test in case of an error.
 //
-// dir.MkDir(t, "sub_dir_name")
+//	dir.MkDir(t, "sub_dir_name")
 func (d *Dir) MkDir(t testing.T, name string) {
 	t.Helper()
 	require.NoError(t, d.fs.MkdirAll(d.fileName(name), os.ModePerm))
@@ -73,7 +76,7 @@ func (d *Dir) MkDir(t testing.T, name string) {
 
 // Bytes requires that actual is equal to file content or updates file content with actual when flag -update is used.
 //
-// dir.Bytes(t, "expected.txt", myBytes)
+//	dir.Bytes(t, "expected.txt", myBytes)
 func (d *Dir) Bytes(t testing.T, fn string, actual []byte) {
 	t.Helper()
 	fileName := d.fileName(fn)
@@ -87,8 +90,8 @@ func (d *Dir) Bytes(t testing.T, fn string, actual []byte) {
 
 // String requires that actual is equal to file content or updates file content with actual when flag -update is used.
 //
-// dir.String(t, "expected.txt", myString)
-func (d *Dir) String(t testing.T, fn string, actual string) {
+//	dir.String(t, "expected.txt", myString)
+func (d *Dir) String(t testing.T, fn, actual string) {
 	t.Helper()
 	fileName := d.fileName(fn)
 	if d.update {
@@ -101,7 +104,7 @@ func (d *Dir) String(t testing.T, fn string, actual string) {
 
 // JSONBytes formats actual json and requires that result is equal to the contents of the file.
 //
-// dir.JSONBytes(t, "expected.json", myJsonBytes)
+//	dir.JSONBytes(t, "expected.json", myJsonBytes)
 func (d *Dir) JSONBytes(t testing.T, fn string, actual []byte) {
 	t.Helper()
 	fileName := d.fileName(fn)
@@ -117,7 +120,7 @@ func (d *Dir) JSONBytes(t testing.T, fn string, actual []byte) {
 
 // JSON Marshals x and uses JSONBytes to compare result and contents of the file.
 //
-// dir.JSON(t, "expected.json", myMarshalableStruct)
+//	dir.JSON(t, "expected.json", myMarshalableStruct)
 func (d *Dir) JSON(t testing.T, fn string, x any) {
 	t.Helper()
 	actual, err := json.Marshal(x)

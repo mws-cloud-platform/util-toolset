@@ -65,15 +65,15 @@ func (s *atomicWriteTestSuite) TestCustomDir() {
 func (s *atomicWriteTestSuite) TestMapFS() {
 	data := []byte("hello")
 	f := fs.NewFS(fs.NewMapFS(), fs.WithAtomicWrite())
-	s.NoError(f.WriteFile("test.txt", []byte("hello"), os.ModePerm))
+	s.Require().NoError(f.WriteFile("test.txt", []byte("hello"), os.ModePerm))
 
 	file, err := f.Open("test.txt")
-	s.NoError(err)
+	s.Require().NoError(err)
 
 	bytes, err := io.ReadAll(file)
-	s.NoError(err)
+	s.Require().NoError(err)
 	s.Equal(data, bytes)
-	s.NoError(file.Close())
+	s.Require().NoError(file.Close())
 
 	_, err = f.Open("test.txt.tmp")
 	s.ErrorIs(err, os.ErrNotExist)

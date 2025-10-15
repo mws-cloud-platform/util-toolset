@@ -1,3 +1,4 @@
+// Package fs provides an abstraction over the file system with read and write capabilities.
 package fs
 
 import (
@@ -14,13 +15,15 @@ import (
 
 // FS provides read and write access to the file system.
 type FS interface {
-	fs.ReadDirFS // We should use ReadDirFS directly, but mock generator doesn't support embedding alias to interface.
+	fs.ReadDirFS
+	// We should use [ReadOnlyFS] directly, but mock generator doesn't support embedding alias to an interface.
+
 	WriteOnlyFS
 }
 
 type (
 	// ReadOnlyFS provides read-only access to the file system.
-	// Currently, it contains only two methods (Open and ReadDir),
+	// Currently, it contains only two methods (Open and ReadDir).
 	ReadOnlyFS = fs.ReadDirFS
 
 	// WritableFile is similar to [fs.File] which also includes almost all
@@ -140,9 +143,9 @@ func (f pathFile) Name() string {
 }
 
 // List returns all the files in the FS. This function should
-// be used only in tests, do not use this in production
+// be used only in tests, do not use this in production.
 func (m *mapFS) List() ([]fs.FileInfo, error) {
-	files := make([]fs.FileInfo, 0)
+	var files []fs.FileInfo
 
 	aferoFs := m.a
 	// error ignore is intended, we only care about getting all valid files
@@ -199,7 +202,7 @@ func CopyFS(dst WriteOnlyFS, src fs.FS) error {
 				return err
 			}
 
-			w, err := dst.OpenFile(path, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0666|info.Mode().Perm())
+			w, err := dst.OpenFile(path, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0o666|info.Mode().Perm())
 			if err != nil {
 				return err
 			}

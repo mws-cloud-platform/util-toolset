@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// baseDir adds prefix dir to all names
+// baseDir option adds prefix dir to all names.
 type baseDir struct {
 	FS
 	dir string

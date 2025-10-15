@@ -146,19 +146,19 @@ func TestDirJSONDifferent(t *testing.T) {
 	require.True(t, mT.failed, mT.LogString())
 }
 
-// Mock implementation of testing.T
+// Mock implementation of [testing.T].
 type mockT struct {
 	skipped bool
 	failed  bool
 	log     string
 }
 
-func (t *mockT) Error(args ...interface{}) {
+func (t *mockT) Error(args ...any) {
 	t.log += fmt.Sprintln(args...)
 	t.Fail()
 }
 
-func (t *mockT) Errorf(format string, args ...interface{}) {
+func (t *mockT) Errorf(format string, args ...any) {
 	t.log += fmt.Sprintf(format, args...)
 	t.Fail()
 }
@@ -176,31 +176,28 @@ func (t *mockT) Failed() bool {
 	return t.failed
 }
 
-func (t *mockT) Fatal(args ...interface{}) {
+func (t *mockT) Fatal(args ...any) {
 	t.log += fmt.Sprint(args...)
 	t.FailNow()
 }
 
-func (t *mockT) Fatalf(format string, args ...interface{}) {
+func (t *mockT) Fatalf(format string, args ...any) {
 	t.log += fmt.Sprintf(format, args...)
 	t.FailNow()
 }
 
-func (t *mockT) Log(args ...interface{}) {
+func (t *mockT) Log(args ...any) {
 	t.log += fmt.Sprintln(args...)
 }
 
-func (t *mockT) Logf(format string, args ...interface{}) {
+func (t *mockT) Logf(format string, args ...any) {
 	t.log += fmt.Sprintf(format, args...)
 }
 
-func (t *mockT) Name() string {
-	return ""
-}
+func (*mockT) Name() string { return "" }
+func (*mockT) Parallel()    {}
 
-func (t *mockT) Parallel() {}
-
-func (t *mockT) Skip(args ...interface{}) {
+func (t *mockT) Skip(args ...any) {
 	t.log += fmt.Sprint(args...)
 	t.SkipNow()
 }
@@ -209,7 +206,7 @@ func (t *mockT) SkipNow() {
 	t.skipped = true
 }
 
-func (t *mockT) Skipf(format string, args ...interface{}) {
+func (t *mockT) Skipf(format string, args ...any) {
 	t.log += fmt.Sprintf(format, args...)
 	t.SkipNow()
 }
@@ -218,11 +215,11 @@ func (t *mockT) Skipped() bool {
 	return t.skipped
 }
 
-func (t *mockT) Helper() {}
+func (*mockT) Helper() {}
 
-func (t *mockT) Cleanup(func()) {}
+func (*mockT) Cleanup(func()) {}
 
-// Returns accumulated logs
+// LogString returns accumulated logs.
 func (t *mockT) LogString() string {
 	return t.log
 }

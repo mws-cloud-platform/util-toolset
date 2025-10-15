@@ -71,7 +71,7 @@ func TestMapFS(t *testing.T) {
 func TestCopyMapFSReal(t *testing.T) {
 	testFS(
 		t,
-		fs.NewFS(fs.NewRealFS(), fs.WithBaseDir(t.TempDir()), fs.WithDirCreate(0700)),
+		fs.NewFS(fs.NewRealFS(), fs.WithBaseDir(t.TempDir()), fs.WithDirCreate(0o700)),
 		fs.NewFS(fs.NewRealFS(), fs.WithBaseDir(t.TempDir()), fs.WithDirCreate(os.ModePerm)),
 	)
 }

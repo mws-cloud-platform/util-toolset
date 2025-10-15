@@ -34,7 +34,7 @@ func TestMapEnvLookupEnvNonSet(t *testing.T) {
 
 	valueInMap, existsInMap := mapEnv.LookupEnv(key)
 	require.False(t, existsInMap)
-	require.Equal(t, "", valueInMap)
+	require.Empty(t, valueInMap)
 }
 
 func TestMapEnvEnviron(t *testing.T) {

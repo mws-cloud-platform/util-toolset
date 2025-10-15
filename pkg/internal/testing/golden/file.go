@@ -31,7 +31,7 @@ func readFile(t testing.T, fileName string) []byte {
 func Bytes(t testing.T, fileName string, actual []byte) {
 	t.Helper()
 	if IsUpdate() {
-		require.NoError(t, os.WriteFile(fileName, actual, 0644))
+		require.NoError(t, os.WriteFile(fileName, actual, 0o644))
 		return
 	}
 	expected := readFile(t, fileName)
@@ -41,10 +41,10 @@ func Bytes(t testing.T, fileName string, actual []byte) {
 // String requires that actual is equal to file content or updates file content with actual when flag -update is used.
 //
 //	golden.String(t, "expected.txt", myString)
-func String(t testing.T, fileName string, actual string) {
+func String(t testing.T, fileName, actual string) {
 	t.Helper()
 	if IsUpdate() {
-		require.NoError(t, os.WriteFile(fileName, []byte(actual), 0644))
+		require.NoError(t, os.WriteFile(fileName, []byte(actual), 0o644))
 		return
 	}
 	expected := readFile(t, fileName)

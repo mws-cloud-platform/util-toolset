@@ -15,7 +15,7 @@ func (e *NonUniqueError) Error() string {
 	return "trying to write " + e.Name + " more than once"
 }
 
-// unique doesn't allow to create more than one file with same name
+// unique option doesn't allow to create more than one file with same name.
 type unique struct {
 	FS
 

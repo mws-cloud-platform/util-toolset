@@ -4,7 +4,6 @@ import (
 	"os"
 	"path"
 	"strconv"
-	"sync"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -48,17 +47,16 @@ func Test_DirParallelUpdate(t *testing.T) {
 	d := NewDir(t, WithFS(mfs), WithPath(goldenPath))
 	d.update = true
 
-	var wg sync.WaitGroup
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			f := strconv.Itoa(i)
-			err := mfs.WriteFile(path.Join(goldenPath, f), []byte(f+f), 0644)
-			require.NoError(t, err)
-			d.String(t, f, f)
-		}()
-	}
+	t.Run("parallel", func(t *testing.T) {
+		for i := range 100 {
+			t.Run(strconv.Itoa(i), func(t *testing.T) {
+				t.Parallel()
 
-	wg.Wait()
+				f := strconv.Itoa(i)
+				err := mfs.WriteFile(path.Join(goldenPath, f), []byte(f+f), 0o644)
+				require.NoError(t, err)
+				d.String(t, f, f)
+			})
+		}
+	})
 }

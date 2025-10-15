@@ -25,13 +25,13 @@ type stubT struct {
 	failed bool
 }
 
-func (s *stubT) Errorf(_ string, _ ...interface{}) {}
+func (*stubT) Errorf(string, ...any) {}
 
 func (s *stubT) FailNow() {
 	s.failed = true
 }
 
-func (s *stubT) Helper() {}
+func (*stubT) Helper() {}
 
 func TestCopyDir(t *testing.T) {
 	for _, tc := range []struct {
