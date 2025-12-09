@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/testing/golden"
+	"github.com/mws-cloud-platform/util-toolset/pkg/testing/golden"
 )
 
 const (

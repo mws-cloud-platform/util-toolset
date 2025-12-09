@@ -5,7 +5,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/mws-cloud-platform/util-toolset)](https://goreportcard.com/report/github.com/mws-cloud-platform/util-toolset)
 [![golangci-lint](https://img.shields.io/badge/linted%20by-golangci--lint-brightgreen)](https://golangci-lint.run/)
 ![Last Commit](https://img.shields.io/github/last-commit/mws-cloud-platform/util-toolset)
-![Go Version](https://img.shields.io/badge/Go-1.24.7%2B-blue)
+![Go Version](https://img.shields.io/badge/Go-1.25.4%2B-blue)
 
 This repository contains internal code and tools for the MWS team. It is not
 intended for public use and is subject to change without notice.
