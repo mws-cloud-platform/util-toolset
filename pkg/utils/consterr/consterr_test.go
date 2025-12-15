@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/utils/consterr"
+	"go.mws.cloud/util-toolset/pkg/utils/consterr"
 )
 
 const (

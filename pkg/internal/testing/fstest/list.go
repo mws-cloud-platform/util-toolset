@@ -6,7 +6,7 @@ import (
 	"github.com/mitchellh/go-testing-interface"
 	"github.com/stretchr/testify/require"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
+	"go.mws.cloud/util-toolset/pkg/internal/os/fs"
 )
 
 // List returns all the files in the FS.

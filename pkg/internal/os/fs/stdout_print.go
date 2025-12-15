@@ -5,7 +5,7 @@ import (
 	"io/fs"
 	"os"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/utils/consterr"
+	"go.mws.cloud/util-toolset/pkg/utils/consterr"
 )
 
 type stdoutPrint struct {

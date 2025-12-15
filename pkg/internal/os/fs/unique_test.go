@@ -7,8 +7,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/mock/gomock"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
-	fsmock "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs/mock"
+	"go.mws.cloud/util-toolset/pkg/internal/os/fs"
+	fsmock "go.mws.cloud/util-toolset/pkg/internal/os/fs/mock"
 )
 
 type uniqueTestSuite struct {

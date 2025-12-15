@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/net/http/client"
+	"go.mws.cloud/util-toolset/pkg/net/http/client"
 )
 
 const jsonDecoderMinRead = 512

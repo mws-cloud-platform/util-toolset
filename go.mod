@@ -1,4 +1,4 @@
-module github.com/mws-cloud-platform/util-toolset
+module go.mws.cloud/util-toolset
 
 go 1.25.4
 

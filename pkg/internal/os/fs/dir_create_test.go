@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
-	fsmock "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs/mock"
+	"go.mws.cloud/util-toolset/pkg/internal/os/fs"
+	fsmock "go.mws.cloud/util-toolset/pkg/internal/os/fs/mock"
 )
 
 func TestDirCreate(t *testing.T) {

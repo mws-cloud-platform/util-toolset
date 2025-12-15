@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/mock/gomock"
 
-	mockfs "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs/mock"
+	mockfs "go.mws.cloud/util-toolset/pkg/internal/os/fs/mock"
 )
 
 func TestDirBytesUpdate(t *testing.T) {

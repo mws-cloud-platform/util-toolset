@@ -9,7 +9,7 @@ import (
 	"io"
 	"unicode"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/utils/consterr"
+	"go.mws.cloud/util-toolset/pkg/utils/consterr"
 )
 
 // ErrInvalidBodyTrail is returned when body trail is not blank.

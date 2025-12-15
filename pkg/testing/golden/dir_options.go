@@ -1,6 +1,6 @@
 package golden
 
-import "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
+import "go.mws.cloud/util-toolset/pkg/internal/os/fs"
 
 // DirOption is an option for [Dir].
 type DirOption func(*Dir)

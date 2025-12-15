@@ -13,7 +13,7 @@ import (
 	fs0 "io/fs"
 	reflect "reflect"
 
-	fs "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
+	fs "go.mws.cloud/util-toolset/pkg/internal/os/fs"
 	gomock "go.uber.org/mock/gomock"
 )
 

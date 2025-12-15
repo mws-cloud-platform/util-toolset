@@ -1,8 +1,8 @@
 # Util-Toolset module: Internal Tools
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/mws-cloud-platform/util-toolset)](https://pkg.go.dev/github.com/mws-cloud-platform/util-toolset)
-[![Build](https://github.com/mws-cloud-platform/util-toolset/actions/workflows/CI.yaml/badge.svg)](https://github.com/mws-cloud-platform/util-toolset/actions/workflows/CI.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/mws-cloud-platform/util-toolset)](https://goreportcard.com/report/github.com/mws-cloud-platform/util-toolset)
+[![PkgGoDev](https://pkg.go.dev/badge/go.mws.cloud/util-toolset)](https://pkg.go.dev/go.mws.cloud/util-toolset)
+[![Build](https://go.mws.cloud/util-toolset/actions/workflows/CI.yaml/badge.svg)](https://go.mws.cloud/util-toolset/actions/workflows/CI.yaml)
+[![Go Report Card](https://goreportcard.com/badge/go.mws.cloud/util-toolset)](https://goreportcard.com/report/go.mws.cloud/util-toolset)
 [![golangci-lint](https://img.shields.io/badge/linted%20by-golangci--lint-brightgreen)](https://golangci-lint.run/)
 ![Last Commit](https://img.shields.io/github/last-commit/mws-cloud-platform/util-toolset)
 ![Go Version](https://img.shields.io/badge/Go-1.25.4%2B-blue)

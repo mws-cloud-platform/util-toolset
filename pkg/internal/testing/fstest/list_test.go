@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
-	"github.com/mws-cloud-platform/util-toolset/pkg/internal/testing/fstest"
+	"go.mws.cloud/util-toolset/pkg/internal/os/fs"
+	"go.mws.cloud/util-toolset/pkg/internal/testing/fstest"
 )
 
 func TestList(t *testing.T) {

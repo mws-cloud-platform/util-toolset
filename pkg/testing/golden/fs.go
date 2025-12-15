@@ -6,7 +6,7 @@ import (
 
 	"github.com/mitchellh/go-testing-interface"
 
-	devpfs "github.com/mws-cloud-platform/util-toolset/pkg/internal/os/fs"
+	devpfs "go.mws.cloud/util-toolset/pkg/internal/os/fs"
 )
 
 // FS is a filesystem implementation for code generation tests.
