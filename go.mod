@@ -1,6 +1,6 @@
 module go.mws.cloud/util-toolset
 
-go 1.25.4
+go 1.25.5
 
 require (
 	github.com/mitchellh/go-testing-interface v1.14.1
