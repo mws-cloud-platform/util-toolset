@@ -4,14 +4,16 @@ import (
 	"errors"
 	"testing"
 
+	"go.mws.cloud/util-toolset/pkg/utils/consterr"
 	"go.mws.cloud/util-toolset/pkg/utils/must"
 )
 
 func TestNoError(t *testing.T) {
-	expectedErr := errors.New("test error")
+	const expectedErr = consterr.Error("test error")
 
 	defer func() {
-		if !errors.Is(recover().(error), expectedErr) {
+		r := recover()
+		if err, ok := r.(error); !ok || !errors.Is(err, expectedErr) {
 			t.Fatal("must.NoError did not panic with the expected error")
 		}
 	}()
