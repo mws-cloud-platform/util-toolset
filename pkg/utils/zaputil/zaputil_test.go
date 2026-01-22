@@ -15,6 +15,8 @@ import (
 )
 
 func TestCtx(t *testing.T) {
+	t.Parallel()
+
 	for _, tt := range []struct {
 		name string
 		ctx  context.Context //nolint:containedctx // test argument
