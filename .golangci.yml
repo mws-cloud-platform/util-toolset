@@ -137,6 +137,11 @@ linters:
         disabled: true
       - name: max-public-structs
         disabled: true
+      - name: var-naming
+        arguments:
+          - [] # AllowList
+          - [] # DenyList
+          - - skip-package-name-collision-with-go-std: true
     usestdlibvars:
       default-rpc-path: true
       time-date-month: true

@@ -1,6 +1,8 @@
 package env
 
-import "sort"
+import (
+	"slices"
+)
 
 // MapEnv is an [Env] implementation backed by a map.
 type MapEnv map[string]string
@@ -34,6 +36,6 @@ func (e MapEnv) Environ() []string {
 	for k, v := range e {
 		result = append(result, k+"="+v)
 	}
-	sort.Strings(result)
+	slices.Sort(result)
 	return result
 }
